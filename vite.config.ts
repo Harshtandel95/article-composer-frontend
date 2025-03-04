@@ -11,11 +11,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': { // Remove the trailing slash
-        target: 'https://article-composer-server.vercel.app', // Update to the correct server URL
+      '/api/': {  // for content manager
+        target: 'https://article-composer-server.vercel.app/',
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/api/, '') // Adjust rewrite to match the new proxy path
+        rewrite: (path) => path.replace(/^\/api\/content/, '')
       },
     }
   }
