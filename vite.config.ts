@@ -1,7 +1,7 @@
 import path from "path"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
-
+import {BackEndUrl} from './src/config'
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -11,12 +11,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api/': {  // for content manager
-        target: 'https://article-composer-server.vercel.app/',
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api\/content/, '')
-      },
+      '/api': BackEndUrl ,
     }
   }
 })
